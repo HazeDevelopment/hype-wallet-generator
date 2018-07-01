@@ -7,7 +7,8 @@ This page generates a new hyPEcoinZ address for the Hypecoin Blockchain. It is s
 Credits
 
 Made by moneromooo, based on code from https://mymonero.com/. Adapted for Karbovanets by Aiwë. And then Re-Adapted for Hypecoin by SrgtCauliflour Copyright notices in the source.
-                4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW
+
+4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW
 				
 KawA9rnrZpTBDXhu5xKrZv7aKnFM4CgX1YxqkRo4k5tVUxMB2yCwhA3eEw7EivcMkChyWF7CwexLjAr5MzJAEDzaLvx2dK1
 
