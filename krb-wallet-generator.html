@@ -94,7 +94,7 @@
 -->
 
 <head>
-  <title>Karbovanets offline wallet generator</title>
+  <title>Hype Offline Wallet Generator</title>
   <meta charset="UTF-8">
     <style type="text/css">
         html {
@@ -6657,6 +6657,7 @@
         .slider .indicators .indicator-item.active {
             background-color: #4CAF50;
         }
+        .hidden
 
 
 
@@ -8539,11 +8540,11 @@ return{_strlen:lb,_ge_mul8:Va,_keccak:db,_ge_scalarmult:Ta,_ge_fromfe_frombytes_
 
 var salt = '4721283fee2db41e1f2fc50ea9f6d783'; // IMPORTANT: never change it, otherwise it will be impossible to restore previously generated wallets!
 var config = {
-    coinUnitPlaces: 12,
-    coinSymbol: 'KRB',
-    coinName: 'Karbowanec',
-    coinUriPrefix: 'karbowanec:',
-    addressPrefix: 111
+    coinUnitPlaces: 9,
+    coinSymbol: 'hyPE',
+    coinName: 'Hypecoin',
+    coinUriPrefix: 'Hypecoin:',
+    addressPrefix: 9112204393076
 };
 var cnUtil = (function(initConfig) {
     //var config = $.extend({}, initConfig);
@@ -10708,7 +10709,7 @@ html { font-family: sans-serif }
 <nav class="grey lighten-3">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">
-			<span id="coinIcon">&#1180;</span> Карбованець
+			<span id="coinIcon">H</span>YPE
         </a>
 
     </div>
@@ -10725,32 +10726,32 @@ html { font-family: sans-serif }
     <div class="row">
         <div class="col s12">
             <p>
-                This page generates a new <a href="http://karbowanec.com/">Karbowanec</a> wallet. It is self contained and
+                This page generates a new <a href="http://hypecoin.foundation/">Hypecoin</a> wallet. It is self contained and
                 does all the necessary calculations locally, so is suitable for generating a new wallet on a machine
                 that is not connected to the network, and may even never be. This way, you can create
-                a Karbowanec wallet without risking the keys.
+                a Hypecoin wallet without risking the keys.
             </p>
         </div>
     </div>
     <div class="row valign-wrapper">
-        <div class="col s4 right-align ">
-                <input class="btn orange" type="button" onclick="js:genwallet(null);"
-                       value="Generate wallet" action=""/>
-                <p>Custom entropy (leave empty to use PRNG)</p>
-                <input type="text" value="" id="user_entropy_widget" />
+        <div class="row center-block"></div>
+                
         </div>
-        <div class="col s1 offset-s1"><h4>or</h4></div>
+ <!--   <div class="col s1 offset-s1"><h4>or</h4></div>
         <div class="col s5 offset-s1">
             <form>
                 <input class="btn deep-orange" type="button" onclick="js:genwallet_prefix();" value="Generate wallet with prefix" action="" id="gen_prefix_widget"/>
                 <p>(very slow for more than a few characters)</p>
-                <input type="text" value="K" id="prefix_widget" oninput="js:check_prefix_validity()"; />
+                <input type="text" value="hyPEcoinZ" id="prefix_widget" oninput="js:check_prefix_validity()"; />
             </form>
-        </div>
+        </div> -->
     </div>
     <div class="row center-align">
         <div class="col s12">
             <form>
+                <input class="btn orange" type="button" onclick="js:genwallet(null);"
+                    value="Generate wallet" action=""/>
+                <input class="hiddendiv" type="text" value="" id="user_entropy_widget" />
                 <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet('english');" value="English" action=""/>
                 <input class="waves-effect waves-light btn" type="button" onclick="js:genwallet('spanish');" value="Spanish" action=""/>
                 <!-- portuguese word list has a few prefix collisions
@@ -10770,32 +10771,14 @@ html { font-family: sans-serif }
                          style="line-height: 25px; height: 25px; font-size: 60%; padding: 0px 1.5rem;"/>
                     </span>
 
-                    <p>This is the address you give to third parties to send Karbo to you.
+                    <p>This is the address you give to third parties to send Hypecoin to you.
                         <br><b>It is the only information here that's meant to be public.</b>
                     </p>
                 </div>
                 <div class="card-action center-align">
                     <pre class="center-align" id="address_widget">generating...</pre>
                     <span class="qrcode" id="address_qr_widget" onclick="js:toggle_qr();"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <div class="card pink lighten-5">
-                <div class="card-content pink-text text-darken-5">
-                    <span class="card-title pink-text text-darken-5">Mnemonic seed</span>
-                    <p>
-                        The mnemonic seed is a string that comprises 25 words and allows you to recreate your
-                        private keys. <b>Keep it secure!</b>
-                    </p>
-					<p>
-						To restore keys from mnemonic seed use Restore tab in Karbowanec paperwallet at <a href="http://paperwallet.karbowanec.com/">paperwallet.karbowanec.com</a>.
-					</p>
-                </div>
-                <div class="card-action center-align">
-                    <h5 class="grey-text text-darken-4" id="mnemonic_widget">Generating... </h5>
+                    <pre class="hiddendiv" id="mnemonic_widget"></pre>
                 </div>
             </div>
         </div>
@@ -10809,9 +10792,6 @@ html { font-family: sans-serif }
                     <p>
                         The spend key and view key are the raw private keys for the
                         new wallet.
-                        
-						<strong>Keys for GUI Wallet</strong> can be imported into wallet in File > Import private key
-						
                     </p>
                     <br>
                     <table>
@@ -10826,7 +10806,7 @@ html { font-family: sans-serif }
                         </tr>
 						
 						<tr>
-                            <td><pre>Keys for GUI Wallet:</pre></td>
+                            <td><pre>Private Key:</pre></td>
                             <td><pre id="wallet_keys_widget">Generating...</pre></td>
                         </tr>
 						
@@ -10848,16 +10828,7 @@ html { font-family: sans-serif }
             <div class="col l12">
                 <h5>Credits</h5>
                 <p>
-                    Made by moneromooo, based on code from <a href="https://mymonero.com/">MyMonero</a>. Adapted for Karbovanets by Aiw&euml;. Copyright notices in the source.
-                    <br>
-                    Thanks to antanst for the CSS, and to luigi1111 for crypto fixes and improvements.
-                    <br>
-                    If you found this useful, a donation would be appreciated:
-                    <br>
-                <pre>4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW</pre>
-				
-				<pre>KawA9rnrZpTBDXhu5xKrZv7aKnFM4CgX1YxqkRo4k5tVUxMB2yCwhA3eEw7EivcMkChyWF7CwexLjAr5MzJAEDzaLvx2dK1</pre>
-
+                    
                 </p>
 
 
@@ -11040,12 +11011,12 @@ function toggle_qr()
     address_qr_widget.style.display="none";
     spend_key_widget.style.display = "block";
     view_key_widget.style.display = "block";
-    mnemonic_widget.style.display = "block";
+    mnemonic_widget.style.display = "none";
   }
   else {
     address_qr_widget.style.display="block";
-    spend_key_widget.style.display = "none";
-    view_key_widget.style.display = "none";
+    spend_key_widget.style.display = "block";
+    view_key_widget.style.display = "block";
     mnemonic_widget.style.display = "none";
   }
 }
@@ -11054,4 +11025,5 @@ genwallet();
 </script>
 
 </body>
+
 </html>
