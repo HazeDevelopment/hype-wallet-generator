@@ -10826,21 +10826,8 @@ html { font-family: sans-serif }
     <div class="container">
         <div class="row">
             <div class="col l12">
-                <h5>Credits</h5>
-                <p>
-                    Made by moneromooo, based on code from <a href="https://mymonero.com/">MyMonero</a>. Adapted for Karbovanets by Aiw&euml;. Copyright notices in the source.
-                    <br>
-                    Thanks to antanst for the CSS, and to luigi1111 for crypto fixes and improvements.
-                    <br>
-                    If you found this useful, a donation would be appreciated:
-                    <br>
-                <pre>4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW</pre>
-				
-				<pre>KawA9rnrZpTBDXhu5xKrZv7aKnFM4CgX1YxqkRo4k5tVUxMB2yCwhA3eEw7EivcMkChyWF7CwexLjAr5MzJAEDzaLvx2dK1</pre>
-
-                </p>
-
-
+                <h5>Adapted for Hypecoin by SrgtCauliflour</h5>
+                hyPEcoinZ7R2y4xbdkw7VmAKtXFg8B1WjXUQGWM44ENi37eCSVgoBTaYxNdWNSEHbuJPxpkvnz6gVEuEwyAAGmeQbRajSTx8EeA1tWpB
 			</div>
         </div>
     </div>
@@ -10896,7 +10883,7 @@ function genwallet(lang)
   mnemonic_widget.innerHTML = mnemonic;
 
   qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-  qr.makeCode("karbowanec:"+keys.public_addr);
+  qr.makeCode("Hype:"+keys.public_addr);
 }
 
 previous_button_text = "";
@@ -10941,7 +10928,7 @@ function genwallet_prefix_worker()
   wallet_keys_widget.innerHTML = keys.privateKeys;
   
   qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-  qr.makeCode("karbowanec:"+keys.public_addr);
+  qr.makeCode("Hype:"+keys.public_addr);
 }
 
 var zerohex="0000000000000000000000000000000000000000000000000000000000000000";
@@ -10993,8 +10980,8 @@ function genwallet_prefix()
     prefix_widget = document.getElementById("prefix_widget");
     prefix = prefix_widget.value;
     prefix.trim();
-    if (prefix.length < 2 || prefix[0] != "K") {
-      alert("Bad prefix "+prefix+" should start with K and be at least one extra character");
+    if (prefix.length < 10 || prefix[0] != "hyPEcoinZ") {
+      alert("Bad prefix "+prefix+" should start with hyPEcoinZ and be at least one extra character");
       return;
     }
     if (!is_valid_prefix(prefix)) {
